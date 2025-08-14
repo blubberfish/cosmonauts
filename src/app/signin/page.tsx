@@ -1,19 +1,9 @@
-"use client"
-import { signIn } from "next-auth/react";
-import { GithubLogoIcon } from "@phosphor-icons/react";
+import { SignInWithGithub } from "./_components/sign-in-with-github";
 
 export default function Page() {
   return (
     <div>
-      <button
-        type="button"
-        onClick={() => {
-          signIn("github");
-        }}
-      >
-        <GithubLogoIcon />
-        <span>Sign In with Github</span>
-      </button>
+      <SignInWithGithub />
     </div>
   );
 }
