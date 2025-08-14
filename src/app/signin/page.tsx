@@ -1,20 +1,32 @@
-import { signIn } from "@/lib/auth";
+import { useSession, signIn, signOut } from "next-auth/react";
 import { GithubLogoIcon } from "@phosphor-icons/react";
 
 export default function Page() {
+  const { status, data: session } = useSession();
   return (
     <div>
-      <form
-        action={async () => {
-          "use server";
-          await signIn("github");
-        }}
-      >
-        <button type="submit">
+      {!session && (
+        <button
+          type="button"
+          onClick={() => {
+            signIn("github");
+          }}
+        >
           <GithubLogoIcon />
           <span>Sign In with Github</span>
         </button>
-      </form>
+      )}
+      {!!session && (
+        <button
+          type="button"
+          onClick={() => {
+            signOut();
+          }}
+        >
+          <GithubLogoIcon />
+          <span>Sign Out</span>
+        </button>
+      )}
     </div>
   );
 }
