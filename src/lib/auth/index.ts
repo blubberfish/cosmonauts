@@ -13,4 +13,28 @@ export const CONFIG: AuthOptions = {
       clientSecret: process.env.AUTH_GOOGLE_SECRET!,
     }),
   ],
+  callbacks: {
+    jwt({ token, account, user }) {
+      const provider = account?.provider;
+      if (provider) {
+        Object.defineProperty(token, "provider", {
+          enumerable: true,
+          writable: false,
+          value: provider,
+        });
+      }
+      return token;
+    },
+    session({ session, token, user }) {
+      const provider = token?.provider;
+      if (provider) {
+        Object.defineProperty(session, "provider", {
+          enumerable: true,
+          writable: false,
+          value: provider,
+        });
+      }
+      return session;
+    },
+  },
 };
