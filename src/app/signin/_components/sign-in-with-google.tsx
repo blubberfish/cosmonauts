@@ -1,17 +1,20 @@
 "use client";
-import { signIn } from "next-auth/react";
 import { GoogleLogoIcon } from "@phosphor-icons/react";
+import { useSignInContext } from "../_contexts/sign-in";
+import { Button } from './button'
 
 export function SignInWithGoogle() {
+  const { pending, signIn } = useSignInContext();
   return (
-    <button
+    <Button
+      disabled={pending}
       type="button"
       onClick={() => {
         signIn("google");
       }}
     >
       <GoogleLogoIcon />
-      <span>Sign In with Google</span>
-    </button>
+      <span>Google</span>
+    </Button>
   );
 }

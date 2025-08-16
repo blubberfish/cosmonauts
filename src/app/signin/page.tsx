@@ -1,9 +1,11 @@
 import { CONFIG } from "@/lib/auth";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
-import { SignInWithGithub } from "./_components/sign-in-with-github";
-import { SignInWithGoogle } from "./_components/sign-in-with-google";
-import { Logger } from "./_components/logger";
+import {
+  SignInProvider,
+  SignInWithGithub,
+  SignInWithGoogle,
+} from "./_components";
 
 export default async function Page() {
   const session = await getServerSession(CONFIG);
@@ -11,11 +13,14 @@ export default async function Page() {
     redirect("/dashboard");
   }
   return (
-    <div>
-      <Logger />
-      <div>
-        <SignInWithGithub />
-        <SignInWithGoogle />
+    <div className="h-svh w-full flex flex-col items-center justify-center bg-black overflow-hidden relative">
+      <div className="stars stars--dense stars--dimmed fixed top-0 left-0"></div>
+      <div className="stars stars--lg stars--sparse fixed top-0 left-0"></div>
+      <div className="flex flex-col gap-2 p-4 rounded shadow min-w-sm bg-black text-white">
+        <SignInProvider>
+          <SignInWithGithub />
+          <SignInWithGoogle />
+        </SignInProvider>
       </div>
     </div>
   );
