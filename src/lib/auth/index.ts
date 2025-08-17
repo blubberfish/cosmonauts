@@ -25,21 +25,16 @@ export const CONFIG: AuthOptions = {
       }
       return token;
     },
-    session({ session, token, user }) {
+    session({ session, token }) {
       const provider = token?.provider;
       if (provider) {
-        Object.defineProperty(session, "provider", {
+        Object.defineProperty(session, "meta", {
           enumerable: true,
           writable: false,
-          value: provider,
-        });
-      }
-      const userId =  token?.sub;
-      if (userId) {
-        Object.defineProperty(session, "userId", {
-          enumerable: true,
-          writable: false,
-          value: userId,
+          value: {
+            provider,
+            sub: token?.sub,
+          },
         });
       }
       return session;
