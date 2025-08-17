@@ -14,25 +14,23 @@ export const CONFIG: AuthOptions = {
     }),
   ],
   callbacks: {
-    jwt({ token, account, user }) {
+    jwt({ token, account }) {
+      token.session = crypto.randomUUID();
       const provider = account?.provider;
       if (provider) {
-        Object.defineProperty(token, "provider", {
-          enumerable: true,
-          writable: false,
-          value: provider,
-        });
+        token.provider = provider;
       }
       return token;
     },
-    session({ session, token, user }) {
-      const provider = token?.provider;
+    session({ session, token }) {
+      session.id =
+        (token?.session as string | undefined) || crypto.randomUUID();
+      const provider = token?.provider as string | undefined;
       if (provider) {
-        Object.defineProperty(session, "provider", {
-          enumerable: true,
-          writable: false,
-          value: provider,
-        });
+        session.meta = {
+          provider,
+          sub: token?.sub,
+        };
       }
       return session;
     },
