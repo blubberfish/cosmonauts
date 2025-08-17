@@ -7,7 +7,11 @@ import {
   SignInWithGoogle,
 } from "./_components";
 
-export default async function Page() {
+export default async function Page({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) {
   const session = await getServerSession(CONFIG);
   if (session) {
     redirect("/dashboard");
