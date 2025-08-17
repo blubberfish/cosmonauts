@@ -34,6 +34,14 @@ export const CONFIG: AuthOptions = {
           value: provider,
         });
       }
+      const userId =  token?.sub;
+      if (userId) {
+        Object.defineProperty(session, "userId", {
+          enumerable: true,
+          writable: false,
+          value: userId,
+        });
+      }
       return session;
     },
   },
