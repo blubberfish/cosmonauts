@@ -36,13 +36,13 @@ export function Chat({ sessionId }: { sessionId: string }) {
   const uploadMessage: React.FormEventHandler<HTMLFormElement> = useCallback(
     (event) => {
       event.preventDefault();
-      const apiKey = process.env.NEXT_API_KEY;
-      const formData = new FormData(event.currentTarget);
-      const inputText = formData.get("inputText") as string;
-      const sessionId = formData.get("sessionId") as string;
+      const apiKey = process.env.NEXT_PUBLIC_API_KEY;
       if (!apiKey) {
         throw new Error("Missing API key");
       }
+      const formData = new FormData(event.currentTarget);
+      const inputText = formData.get("inputText") as string;
+      const sessionId = formData.get("sessionId") as string;
       if (!inputText || !sessionId) {
         return;
       }
@@ -95,6 +95,7 @@ export function Chat({ sessionId }: { sessionId: string }) {
             {entry.text}
           </div>
         ))}
+        {!!pending && <div className="h-6 px-4 py-1 bg-gray-400 animate-pulse rounded" />}
       </div>
       <form
         className="flex flex-col justify-stretch p-4 rounded border mt-4"
