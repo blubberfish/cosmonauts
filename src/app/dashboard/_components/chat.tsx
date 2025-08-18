@@ -95,6 +95,7 @@ export function Chat({ sessionId }: { sessionId: string }) {
             {entry.text}
           </div>
         ))}
+        {!!pending && <div className="h-6 px-4 py-1 bg-gray-400 animate-pulse rounded" />}
       </div>
       <form
         className="flex flex-col justify-stretch p-4 rounded border mt-4"
