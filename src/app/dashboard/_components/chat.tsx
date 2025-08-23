@@ -1,5 +1,5 @@
 "use client";
-import { PaperPlaneRightIcon } from "@phosphor-icons/react";
+import { Send } from "@deemlol/next-icons";
 import React, { useCallback, useEffect, useState } from "react";
 
 interface ChatEntry {
@@ -115,11 +115,15 @@ export function Chat({ sessionId }: { sessionId: string }) {
             disabled={!!pending}
             type="submit"
           >
-            <PaperPlaneRightIcon />
+            <Send />
             <span>Submit</span>
           </button>
         </nav>
       </form>
+      <input type="file" ref={ ref => {
+        if (!ref) return;
+        ref.click();
+      }} />
     </div>
   );
 }

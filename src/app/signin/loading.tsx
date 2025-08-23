@@ -18,17 +18,15 @@ export default async function Page({
   }
   return (
     <div className="p-8 mx-auto w-full max-w-sm flex flex-col items-center">
-      <div className="aspect-square w-32 rounded-full from-sky-400 to-violet-400 bg-linear-to-br"></div>
+      <div className="aspect-square w-32 rounded-full bg-gray-400 animate-pulse"></div>
       <div className="flex-1 flex flex-col w-full gap-6 mt-8">
         <header className="flex flex-row items-center gap-4">
           <hr className="flex-1 border-b border-white/30" />
-          <p>Sign in with</p>
+          <p className="h-4 w-[8ch] rounded bg-gray-400 animate-pulse"></p>
           <hr className="flex-1 border-b border-white/30" />
         </header>
-        <SignInProvider>
-          <SignInWithGithub />
-          <SignInWithGoogle />
-        </SignInProvider>
+        <div className="h-8 w-full rounded bg-gray-400 animate-pulse"></div>
+        <div className="h-8 w-full rounded bg-gray-400 animate-pulse"></div>
       </div>
     </div>
   );
