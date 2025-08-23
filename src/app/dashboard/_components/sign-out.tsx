@@ -1,5 +1,5 @@
 "use client"
-import { SignOutIcon } from "@phosphor-icons/react";
+import { LogOut } from "@deemlol/next-icons";
 import { signOut } from "next-auth/react";
 
 export function SignOut() {
@@ -11,7 +11,7 @@ export function SignOut() {
         signOut();
       }}
     >
-      <SignOutIcon />
+      <LogOut />
       <span>Sign Out</span>
     </button>
   );
