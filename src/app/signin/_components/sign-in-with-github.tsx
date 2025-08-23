@@ -1,5 +1,5 @@
 "use client";
-import { GithubLogoIcon } from "@phosphor-icons/react";
+import { Github } from '@deemlol/next-icons'
 import { useSignInContext } from "../_contexts/sign-in";
 import { Button } from './button'
 
@@ -13,7 +13,7 @@ export function SignInWithGithub() {
         signIn("github");
       }}
     >
-      <GithubLogoIcon />
+      <Github />
       <span>Github</span>
     </Button>
   );
