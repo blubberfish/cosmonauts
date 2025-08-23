@@ -1,5 +1,5 @@
 "use client";
-import { PersonIcon } from "@phosphor-icons/react";
+import { User } from "@deemlol/next-icons";
 import { useState } from "react";
 import { SignOut } from "./sign-out";
 
@@ -25,7 +25,7 @@ export function RightPocket({ profileImg }: RightPocketProps) {
             src={profileImg}
           />
         ) : (
-          <PersonIcon className="aspect-square h-8" />
+          <User className="aspect-square h-8" />
         )}
       </button>
       {visible && (
