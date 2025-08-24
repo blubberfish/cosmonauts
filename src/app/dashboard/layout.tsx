@@ -4,23 +4,20 @@ import { redirect } from "next/navigation";
 
 export default async function Layout({
   children,
+  header,
   sidebar,
-  user,
 }: {
-  children: React.ReactNode;
-  sidebar: React.ReactNode;
-  user: React.ReactNode;
+  [key: string]: React.ReactNode;
 }) {
   const session = await getServerSession(CONFIG);
   if (!session) {
     redirect(`/signin`);
   }
   return (
-    <div className="h-dvh w-dvw bg-neutral-100">
-      <header className="h-16 w-full flex flex-row flex-nowrap items-center bg-white text-black px-6 py-2">
-        <div className="flex-1"></div>
-        {user}
-      </header>
+    <div className="min-h-screen w-screen relative bg-black text-white">
+      <div className="fixed top-0 left-0 stars"></div>
+      <div className="fixed top-0 left-0 stars stars--dense stars--dimmed"></div>
+      {header}
       {children}
       {sidebar}
     </div>
