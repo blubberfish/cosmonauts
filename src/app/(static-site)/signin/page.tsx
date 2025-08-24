@@ -7,7 +7,7 @@ import { redirect } from "next/navigation";
 export default async function Page() {
   const session = await getServerSession(CONFIG);
   if (session) {
-    redirect("/dashboard/profile");
+    redirect("/dashboard");
   }
 
   return (
