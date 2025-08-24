@@ -61,7 +61,7 @@ export function SideBarMenuButton() {
 function SideBarLink(props: React.PropsWithChildren<LinkProps>) {
   return (
     <Link
-      className="col-span-full px-8 py-3 text-black/67 hover:text-white/80 hover:bg-black/35"
+      className="col-span-full px-8 py-3 text-white/67 hover:text-white hover:bg-black/35"
       {...props}
     />
   );
@@ -84,21 +84,21 @@ function Profile() {
         )}
       </div>
       {!!name ? (
-        <p className="text-gray-700 text-center mt-1 text-sm">{name}</p>
+        <p className="text-white/67 text-center mt-1 text-sm">{name}</p>
       ) : (
         <p className="bg-gray-400 animate-pulse w-[10ch] mx-auto rounded mt-1 text-sm">
           &nbsp;
         </p>
       )}
       {!!email ? (
-        <p className="text-gray-700 text-center mt-1 text-xs">{email}</p>
+        <p className="text-white/67 text-center mt-1 text-xs">{email}</p>
       ) : (
         <p className="bg-gray-400 animate-pulse w-[15ch] mx-auto rounded mt-1 text-xs">
           &nbsp;
         </p>
       )}
       <button
-        className="mx-auto my-2 px-3 text-sm rounded-full border border-rose-700 text-rose-700 hover:text-white hover:bg-rose-700 disabled:text-rose-700/50 disabled:border-rose-700/50 disabled:bg-transparent disabled:cursor-not-allowed"
+        className="mx-auto my-2 px-3 text-sm rounded-full bg-red-500 text-white hover:opacity-80 disabled:opacity-50 disabled:cursor-not-allowed"
         disabled={status === "loading"}
         onClick={() => {
           signOut({ callbackUrl: "/signin" });
