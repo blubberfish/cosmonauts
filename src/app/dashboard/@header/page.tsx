@@ -8,7 +8,7 @@ export default async function Page() {
   const userProfileImage = session?.user?.image;
 
   return (
-    <div className="h-16 w-full max-w-5xl mx-auto px-8 flex flex-row flex-nowrap items-center">
+    <div className="h-16 w-full px-8 flex flex-row flex-nowrap items-center">
       <nav className="flex-1">
         <Link href="/">Workstream</Link>
       </nav>
