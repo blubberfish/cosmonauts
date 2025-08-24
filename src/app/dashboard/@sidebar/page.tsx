@@ -1,3 +1,4 @@
+import { Book, MessageSquare } from "@deemlol/next-icons";
 import { CloseButton } from "./_components";
 
 export default async function Page({
@@ -17,7 +18,20 @@ export default async function Page({
         <a href="#">Workstream</a>
         <CloseButton />
       </header>
-      <div className="flex-1"></div>
+      <div className="flex-1">
+        <a href="/dashboard/ask-cosmos">
+          <span>
+            <MessageSquare />
+          </span>
+          Ask Cosmos
+        </a>
+        <a href="/dashboard/knowledge-base">
+          <span>
+            <Book />
+          </span>
+          Knowledge Base
+        </a>
+      </div>
     </div>
   );
 }

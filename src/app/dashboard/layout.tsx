@@ -18,7 +18,9 @@ export default async function Layout({
       <div className="fixed top-0 left-0 stars"></div>
       <div className="fixed top-0 left-0 stars stars--dense stars--dimmed"></div>
       {header}
-      {children}
+      <div className="min-h-[calc(100svh-theme(spacing.16))] w-full max-w-5xl mx-auto py-12 grid grid-cols-12 grid-flow-dense auto-rows-min">
+        {children}
+      </div>
       {sidebar}
     </div>
   );
