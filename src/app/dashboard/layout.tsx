@@ -1,28 +1,26 @@
-import { CONFIG } from "@/lib/auth";
-import { getServerSession } from "next-auth";
-import { redirect } from "next/navigation";
+import Link from "next/link";
+import React from "react";
+import { SideBar, SideBarMenuButton } from "./_components";
+import { Session } from "@/lib/components";
 
-export default async function Layout({
-  children,
-  sidebar,
-  user,
-}: {
-  children: React.ReactNode;
-  sidebar: React.ReactNode;
-  user: React.ReactNode;
-}) {
-  const session = await getServerSession(CONFIG);
-  if (!session) {
-    redirect(`/signin`);
-  }
+export default function Layout({ children }: Record<string, React.ReactNode>) {
   return (
-    <div className="h-dvh w-dvw bg-neutral-100">
-      <header className="h-16 w-full flex flex-row flex-nowrap items-center bg-white text-black px-6 py-2">
-        <div className="flex-1"></div>
-        {user}
+    <>
+      <header className="h-16 sticky top-0 left-0 right-0 px-8 flex flex-row items-center-safe bg-black text-white">
+        <nav className="flex-1">
+          <Link
+            className="px-3 py-1 rounded hover:bg-black/5"
+            href="/dashboard"
+          >
+            Cosmos
+          </Link>
+        </nav>
+        <SideBarMenuButton />
       </header>
       {children}
-      {sidebar}
-    </div>
+      <Session>
+        <SideBar />
+      </Session>
+    </>
   );
 }
