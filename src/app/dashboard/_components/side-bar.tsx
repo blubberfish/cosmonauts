@@ -4,9 +4,17 @@ import { Menu, X } from "@deemlol/next-icons";
 import { signOut, useSession } from "next-auth/react";
 import Link, { LinkProps } from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useCallback } from "react";
+import { Suspense, useCallback } from "react";
 
 export function SideBar() {
+  return (
+    <Suspense>
+      <SideBarClient />
+    </Suspense>
+  );
+}
+
+function SideBarClient() {
   const router = useRouter();
   const hideSideBar = useCallback(() => {
     const url = new URL(document.location.href);
