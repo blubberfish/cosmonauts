@@ -1,3 +1,12 @@
+import auth from "@/lib/auth/vendor/better-auth";
+import { headers } from "next/headers";
+
 export default async function Page() {
-  return <div className="h-[calc(100vh-theme(spacing.16))] bg-black"></div>;
+  const session = await auth.api.getSession({ headers: await headers() });
+  return (
+    <>
+      <a href="/dashboard/profile">Profile</a>
+      <pre>{JSON.stringify(session, null, 2)}</pre>
+    </>
+  );
 }

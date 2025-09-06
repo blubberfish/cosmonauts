@@ -1,16 +1,28 @@
-import { CONFIG } from "@/lib/auth";
-import { Users } from "@/lib/database/users";
-import { getServerSession } from "next-auth";
-import { Identity } from "./_components/identity";
-import { Teams } from "./_components/teams";
+import {
+  SignInWithGitHubButton,
+  SignInWithGoogleButton,
+} from "@/lib/components";
+import auth from "@/lib/auth/vendor/better-auth";
+import { headers } from "next/headers";
 
 export default async function Page() {
-  const session = await getServerSession(CONFIG);
-  const user = !!session && (await new Users().getProfile(session));
+  const requestHeaders = await headers();
+  const session = await auth.api.getSession({
+    headers: requestHeaders,
+  });
+  const accounts = await auth.api.listUserAccounts({
+    headers: requestHeaders,
+  });
   return (
-    <div className="min-h-[calc(100vh-theme(spacing.16))] grid grid-cols-12 auto-rows-min bg-neutral-800 text-white/80">
-      <Identity session={session} />
-      <Teams />
+    <div className="grid grid-cols-1 sm:grid-cols-[1fr_max-content]">
+      <div>
+        <pre>{JSON.stringify(session, null, 2)}</pre>
+        <pre>{JSON.stringify(accounts ?? [], null, 2)}</pre>
+      </div>
+      <div className="min-w-sm p-6 rounded overflow-hidden flex flex-col bg-neutral-900">
+        <SignInWithGitHubButton allowLinking />
+        <SignInWithGoogleButton allowLinking />
+      </div>
     </div>
   );
 }
