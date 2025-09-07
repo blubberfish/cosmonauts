@@ -1,21 +1,41 @@
-import { PropsWithChildren } from "react";
+"use client";
 
-export function Button({
-  children,
-  disabled,
-  onClick,
-}: PropsWithChildren<{
-  disabled?: boolean;
-  onClick?: { (): void };
-}>) {
+import type { OAuthProviders as ProviderName } from "@/lib/auth/vendor/better-auth/types";
+import { use, type PropsWithChildren, type ReactNode } from "react";
+import { Github, Google } from "iconoir-react";
+import { useOAuthVendor } from "./context";
+
+const ICON_MAP: Partial<
+  Record<ProviderName, { label: string; icon: ReactNode }>
+> = {
+  google: { icon: <Google />, label: "Google" },
+  github: { icon: <Github />, label: "GitHub" },
+};
+
+export interface ButtonProps {
+  className?: string;
+  provider: ProviderName;
+}
+
+export function Button({ className, provider }: ButtonProps) {
+  const { pending, authenticateUser } = useOAuthVendor();
+  const content = ICON_MAP[provider];
+
+  if (!content) {
+    return null;
+  }
+
   return (
     <button
-      className="inline-flex items-center gap-2 rounded bg-neutral-800 px-4 py-2 text-white hover:bg-neutral-700"
-      disabled={disabled}
-      onClick={onClick}
+      disabled={pending}
+      className={className || "col-span-full grid grid-cols-subgrid"}
+      onClick={() => {
+        authenticateUser(provider);
+      }}
       type="button"
     >
-      {children}
+      {content.icon}
+      <span>{content.label}</span>
     </button>
   );
 }
