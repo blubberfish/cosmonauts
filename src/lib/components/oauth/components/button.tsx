@@ -28,7 +28,7 @@ export function Button({ className, provider }: ButtonProps) {
   return (
     <button
       disabled={pending}
-      className={className || "col-span-full min-w-sm max-w-full grid grid-cols-subgrid items-center border rounded-lg px-3 py-1 bg-neutral-100 hover:bg-neutral-100 hover:ring- disabled:opacity-50 disabled:cursor-not-allowed"}
+      className={className || "col-span-full min-w-sm max-w-full grid grid-cols-subgrid items-center text-current hover:text-violet-300 disabled:text-gray-400 border cursor-pointer disabled:cursor-not-allowed rounded-full px-3 py-2"}
       onClick={() => {
         authenticateUser(provider);
       }}
