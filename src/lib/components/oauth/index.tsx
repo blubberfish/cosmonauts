@@ -20,7 +20,7 @@ export function OAuthProviders({
     <OAuthVendorProvider>
       <nav
         className={
-          className || "grid grid-cols-[max-content_1fr] auto-rows-min"
+          className || "w-full grid grid-cols-[max-content_1fr] auto-rows-min justify-center gap-x-2 gap-y-6"
         }
       >
         {enable.map((provider) => (
