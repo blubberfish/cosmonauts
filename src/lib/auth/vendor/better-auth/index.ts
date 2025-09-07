@@ -23,3 +23,5 @@ const auth = betterAuth({
 });
 
 export default auth;
+
+export type * from "./types";
