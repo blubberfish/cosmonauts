@@ -1,10 +1,3 @@
-import {
-  OAuthProviders,
-  type OAuthProvidersProps,
-} from "@/lib/components/oauth";
-
-const OAUTH: OAuthProvidersProps["enable"] = ["google", "github"];
-
 export default function Page() {
   return (
     <>
@@ -22,12 +15,14 @@ export default function Page() {
       </header>
       <section className="w-screen max-w-3xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-[1fr_max-content] gap-6">
         <header>
-          <h1 className="text-xl lg:text-3xl font-bold">Sign in to dashboard</h1>
+          <h1 className="text-xl lg:text-3xl font-bold">
+            Sign in to dashboard
+          </h1>
           <div className="h-4 w-full rounded bg-gray-400 animate-pulse mt-2"></div>
           <div className="h-4 w-full rounded bg-gray-400 animate-pulse mt-2"></div>
         </header>
         <div className="w-screen max-w-xs mx-auto grid grid-cols-1 grid-rows">
-          <OAuthProviders enable={OAUTH} />
+          <a href="/signin">Sign in to dashboard</a>
         </div>
       </section>
     </>
