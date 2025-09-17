@@ -1,3 +1,10 @@
-export default async function Page() {
-  return <div className="h-[calc(100vh-theme(spacing.16))] bg-black"></div>;
+import { getSession } from "better-auth/api";
+import { headers } from "next/headers";
+
+export default async function Page({
+  searchParams,
+}: {
+  searchParams: Promise<Record<string, string | string[]>>;
+}) {
+  return null;
 }

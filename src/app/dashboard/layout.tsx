@@ -1,26 +1,24 @@
-import Link from "next/link";
-import React from "react";
-import { SideBar, SideBarMenuButton } from "./_components";
-import { Session } from "@/lib/components";
+import { Head } from "@/lib/components/dashboard/head";
+import { ShowMenuAction } from "@/lib/components/dashboard/head/action";
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default function Layout({
+  children,
+  side,
+}: {
+  children: React.ReactNode;
+  error: React.ReactNode;
+  side: React.ReactNode;
+}) {
   return (
     <>
-      <header className="h-16 sticky top-0 left-0 right-0 px-8 flex flex-row items-center-safe bg-black text-white">
-        <nav className="flex-1">
-          <Link
-            className="px-3 py-1 rounded hover:bg-black/5"
-            href="/dashboard"
-          >
-            Cosmos
-          </Link>
-        </nav>
-        <SideBarMenuButton />
-      </header>
-      {children}
-      <Session>
-        <SideBar />
-      </Session>
+      <Head className={(css) => `${css} bg-neutral-700`}>
+        <Head.Title>
+          <div className="size-10 rounded-full bg-blue-400 animate-pulse" />
+        </Head.Title>
+        <ShowMenuAction />
+      </Head>
+      <main className="grid grid-cols-12 auto-rows-min gap-6">{children}</main>
+      {side}
     </>
   );
 }
