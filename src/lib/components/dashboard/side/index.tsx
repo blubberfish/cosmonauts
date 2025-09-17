@@ -1,10 +1,10 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { HideMenu } from "./actions";
+import type { PropsWithChildren } from "react";
 import { User } from "./user";
-import { SIDEBAR_KEY } from "../constants";
 import { Head } from "../head";
+import { HideMenuAction } from "../head/action";
 
 export interface SideProps {
   controllingKey: string;
@@ -13,14 +13,13 @@ export interface SideProps {
   userName?: string;
 }
 
-const HideMenuAction = <HideMenu controllingKey={SIDEBAR_KEY} />;
-
 export function Side({
   controllingKey,
+  children,
   userAvatar,
   userEmail,
   userName,
-}: SideProps) {
+}: PropsWithChildren<SideProps>) {
   const param = useSearchParams().get(controllingKey);
   const shouldOpen = param === "true";
 
@@ -30,10 +29,13 @@ export function Side({
 
   return (
     <div className="fixed inset-y-0 right-0 w-screen max-w-md overflow-x-hidden overflow-y-auto bg-neutral-800 text-white md:rounded-l-lg shadow">
-      <div className="from-blue-600 to-violet-800 bg-gradient-to-br">
-        <Head actions={HideMenuAction} />
-      </div>
-      <User avatar={userAvatar} email={userEmail} name={userName} />
+      <Head className={(css) => `${css} bg-neutral-800`}>
+        <Head.Title>
+          <User avatar={userAvatar} email={userEmail} name={userName} />
+        </Head.Title>
+        <HideMenuAction />
+      </Head>
+      {children}
     </div>
   );
 }

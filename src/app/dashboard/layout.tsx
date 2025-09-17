@@ -1,8 +1,5 @@
-import { SIDEBAR_KEY } from "@/lib/components/dashboard/constants";
 import { Head } from "@/lib/components/dashboard/head";
-import { ShowMenu } from "@/lib/components/dashboard/side/actions";
-
-const ShowMenuAction = <ShowMenu controllingKey={SIDEBAR_KEY} />;
+import { ShowMenuAction } from "@/lib/components/dashboard/head/action";
 
 export default function Layout({
   children,
@@ -14,7 +11,12 @@ export default function Layout({
 }) {
   return (
     <>
-      <Head actions={ShowMenuAction} />
+      <Head className={(css) => `${css} bg-neutral-700`}>
+        <Head.Title>
+          <div className="size-10 rounded-full bg-blue-400 animate-pulse" />
+        </Head.Title>
+        <ShowMenuAction />
+      </Head>
       <main className="grid grid-cols-12 auto-rows-min gap-6">{children}</main>
       {side}
     </>
