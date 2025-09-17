@@ -1,9 +1,8 @@
 import auth from "@/lib/auth/vendor/better-auth";
 import type { Account } from "better-auth";
-import { Check, GithubCircle, GoogleCircle } from "iconoir-react";
+import { GithubCircle, GoogleCircle } from "iconoir-react";
 import { headers } from "next/headers";
 import { AccountRow } from "./_components/account";
-import { LinkAccountButton } from "./_components/link-button";
 import { Table } from "./_components/table";
 import { Section } from "../_components/section";
 

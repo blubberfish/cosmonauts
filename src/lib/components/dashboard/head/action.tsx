@@ -1,9 +1,9 @@
 "use client";
 
+import { Head } from "@/lib/components/dashboard/head";
 import { Menu, Xmark } from "iconoir-react";
-import { Head } from ".";
-import { useSideActions } from "../side/hooks";
 import { ComponentType, SVGProps } from "react";
+import { useSideActions } from "../side/hooks";
 
 function withActionIconStyle(Icon: ComponentType<SVGProps<SVGSVGElement>>) {
   return (props: SVGProps<SVGSVGElement>) => (
