@@ -1,10 +1,11 @@
 import { Suspense } from "react";
+import Loading from "./loading";
 import Page from "./page";
 
-export default async function Default() {
+export default async function Default(props: any) {
   return (
-    <Suspense>
-      <Page />
+    <Suspense fallback={<Loading />}>
+      <Page {...props} />
     </Suspense>
   );
 }
