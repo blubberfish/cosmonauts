@@ -6,6 +6,7 @@ import { ButtonHTMLAttributes } from "react";
 export function SignOutButton(props: ButtonHTMLAttributes<HTMLButtonElement>) {
   return (
     <button
+      className="group"
       type="button"
       onClick={() => {
         signOut({

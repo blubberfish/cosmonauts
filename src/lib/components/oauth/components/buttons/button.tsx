@@ -3,7 +3,7 @@ import { PropsWithChildren, type ButtonHTMLAttributes } from "react";
 export function Button(props: ButtonHTMLAttributes<HTMLButtonElement>) {
   return (
     <button
-      className="relative w-full px-4 py-2 gap-x-2 rounded-full bg-gray-100 hover:bg-gray-100/80 text-gray-800 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+      className="relative w-full px-3 py-2 gap-x-2 rounded-full bg-white text-slate-700 hover:ring-4 hover:ring-blue-300 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
       {...props}
     />
   );
