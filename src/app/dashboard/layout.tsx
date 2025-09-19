@@ -1,7 +1,10 @@
+import auth from "@/lib/auth/vendor/better-auth";
 import { Head } from "@/lib/components/dashboard/head";
 import { ShowMenuAction } from "@/lib/components/dashboard/head/action";
+import { headers } from "next/headers";
+import { redirect } from "next/navigation";
 
-export default function Layout({
+export default async function Layout({
   children,
   side,
 }: {
@@ -9,6 +12,12 @@ export default function Layout({
   error: React.ReactNode;
   side: React.ReactNode;
 }) {
+  const session = await auth.api.getSession({ headers: await headers() });
+
+  if (!session) {
+    redirect("/signin");
+  }
+
   return (
     <>
       <Head className={(css) => `${css} bg-neutral-700`}>
