@@ -2,7 +2,7 @@ import type { ButtonHTMLAttributes, PropsWithChildren } from "react";
 import React from "react";
 
 const HEAD_CSS =
-  "sticky top-0 h-16 flex flex-row flex-nowrap items-center px-6";
+  "sticky top-0 h-16 flex flex-row flex-nowrap items-center px-6 bg-neutral-700";
 
 export function Head({
   children,

@@ -24,6 +24,6 @@ function Body({
   children,
   session,
 }: PropsWithChildren<{ session?: { session: Session; user: User } | null }>) {
-  if (!session) return null;
+  if (!session) return <div>Please log in</div>;
   return children;
 }
